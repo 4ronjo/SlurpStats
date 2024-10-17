@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Slurp Stats</string>
+    <string-array name="Biologisches_Geschlecht">
+        <item>Mann</item>
+        <item>Frau</item>
+    </string-array>
+</resources>
