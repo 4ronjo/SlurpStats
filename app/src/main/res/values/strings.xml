@@ -4,4 +4,8 @@
         <item>Mann</item>
         <item>Frau</item>
     </string-array>
+    <string-array name="Getraenke_Auswahl">
+        <item>Bier</item>
+        <item>Wodka</item>
+    </string-array>
 </resources>
