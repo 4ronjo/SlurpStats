@@ -1,2 +1,4 @@
 # SlurpStats
-Eine auf Android basierende, in Java gebaute mobile Applikation, welche einem die Nutzung der Widmark-Formel (Bestimmung des Alkoholgehalts im Blut zur Abschätzung im Voraus) ermöglicht. Die Applikation basiert auf dem Auftrag des Studiengangmoduls 'Mobile Applikationen' der DHBW Karlsruhe im Studiengang Wirtschaftsinformatik SoftwareEngineering.
+An Android-based mobile application built in Java, which enables the use of the Widmark formula (determination of the alcohol content in the blood for estimation in advance). The application is based on the assignment of the study program module 'Mobile Applications' of the DHBW Karlsruhe in the study program Business Informatics Software Engineering.
+
+The databases are made with SQLite and the application is made with Java in Android Studio.
