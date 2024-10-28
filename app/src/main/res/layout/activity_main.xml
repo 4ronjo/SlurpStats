@@ -74,7 +74,7 @@
         app:layout_constraintEnd_toEndOf="parent"/>
 
     <EditText
-        android:id="@+id/Koerpergewicht"
+        android:id="@+id/edit_text_gewicht"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:hint="Körpergewicht in Kilogramm"
@@ -87,13 +87,13 @@
         android:layout_marginEnd="16dp"/>
 
     <Spinner
-        android:id="@+id/Biologisches_Geschlecht"
+        android:id="@+id/spinner_geschlecht"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:spinnerMode="dropdown"
         android:entries="@array/Biologisches_Geschlecht"
         android:layout_marginTop="16dp"
-        app:layout_constraintTop_toBottomOf="@id/Koerpergewicht"
+        app:layout_constraintTop_toBottomOf="@id/edit_text_gewicht"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginStart="16dp"
@@ -105,7 +105,7 @@
         android:layout_height="wrap_content"
         android:text="Berechnen"
         android:layout_marginTop="75dp"
-        app:layout_constraintTop_toBottomOf="@id/Biologisches_Geschlecht"
+        app:layout_constraintTop_toBottomOf="@id/spinner_geschlecht"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginStart="16dp"

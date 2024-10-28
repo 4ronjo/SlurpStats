@@ -1,52 +1,41 @@
 package com.example.slurpstats;
 
 public class Result {
-    private int id;
-    private String geschlecht;
-    private double gewicht;
-    private double blutalkoholwert;
+    private long id;
+    private String gender;
+    private double weight;
+    private double bloodAlcoholContent;
+    private String date;
+    private String title;
 
-    // Konstruktoren
-    public Result() {
-    }
+    // Constructors
+    public Result() {}
 
-    public Result(int id, String geschlecht, double gewicht, double blutalkoholwert) {
+    public Result(long id, String gender, double weight, double bloodAlcoholContent, String date, String title) {
         this.id = id;
-        this.geschlecht = geschlecht;
-        this.gewicht = gewicht;
-        this.blutalkoholwert = blutalkoholwert;
+        this.gender = gender;
+        this.weight = weight;
+        this.bloodAlcoholContent = bloodAlcoholContent;
+        this.date = date;
+        this.title = title;
     }
 
-    // Getter und Setter
-    public int getId() {
-        return id;
-    }
+    // Getters and Setters
+    public long getId() { return id; }
+    public void setId(long id) { this.id = id; }
 
-    public void setId(int id) {
-        this.id = id;
-    }
+    public String getGender() { return gender; }
+    public void setGender(String gender) { this.gender = gender; }
 
-    public String getGeschlecht() {
-        return geschlecht;
-    }
+    public double getWeight() { return weight; }
+    public void setWeight(double weight) { this.weight = weight; }
 
-    public void setGeschlecht(String geschlecht) {
-        this.geschlecht = geschlecht;
-    }
+    public double getBloodAlcoholContent() { return bloodAlcoholContent; }
+    public void setBloodAlcoholContent(double bloodAlcoholContent) { this.bloodAlcoholContent = bloodAlcoholContent; }
 
-    public double getGewicht() {
-        return gewicht;
-    }
+    public String getDate() { return date; }
+    public void setDate(String date) { this.date = date; }
 
-    public void setGewicht(double gewicht) {
-        this.gewicht = gewicht;
-    }
-
-    public double getBlutalkoholwert() {
-        return blutalkoholwert;
-    }
-
-    public void setBlutalkoholwert(double blutalkoholwert) {
-        this.blutalkoholwert = blutalkoholwert;
-    }
+    public String getTitle() { return title; }
+    public void setTitle(String title) { this.title = title; }
 }

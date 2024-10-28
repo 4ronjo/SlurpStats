@@ -1,52 +1,31 @@
 package com.example.slurpstats;
 
 public class ConsumptionDetail {
-    private int id;
-    private int resultId;
-    private int getraenkeId;
-    private double menge;
+    private long id;
+    private long resultId;
+    private long drinkId;
+    private double amount;
 
     // Konstruktoren
-    public ConsumptionDetail() {
-    }
+    public ConsumptionDetail() {}
 
-    public ConsumptionDetail(int id, int resultId, int getraenkeId, double menge) {
+    public ConsumptionDetail(long id, long resultId, long drinkId, double amount) {
         this.id = id;
         this.resultId = resultId;
-        this.getraenkeId = getraenkeId;
-        this.menge = menge;
+        this.drinkId = drinkId;
+        this.amount = amount;
     }
 
     // Getter und Setter
-    public int getId() {
-        return id;
-    }
+    public long getId() { return id; }
+    public void setId(long id) { this.id = id; }
 
-    public void setId(int id) {
-        this.id = id;
-    }
+    public long getResultId() { return resultId; }
+    public void setResultId(long resultId) { this.resultId = resultId; }
 
-    public int getResultId() {
-        return resultId;
-    }
+    public long getDrinkId() { return drinkId; }
+    public void setDrinkId(long drinkId) { this.drinkId = drinkId; }
 
-    public void setResultId(int resultId) {
-        this.resultId = resultId;
-    }
-
-    public int getGetraenkeId() {
-        return getraenkeId;
-    }
-
-    public void setGetraenkeId(int getraenkeId) {
-        this.getraenkeId = getraenkeId;
-    }
-
-    public double getMenge() {
-        return menge;
-    }
-
-    public void setMenge(double menge) {
-        this.menge = menge;
-    }
+    public double getAmount() { return amount; }
+    public void setAmount(double amount) { this.amount = amount; }
 }

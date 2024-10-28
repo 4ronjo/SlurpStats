@@ -1,42 +1,24 @@
 package com.example.slurpstats;
 
 public class Drink {
-    private int id;
+    private long id;
     private String name;
-    private double alkoholgehalt;
+    private double alcoholContent;
 
-    // Konstruktoren
-    public Drink() {
-    }
+    public Drink() {}
 
-    public Drink(int id, String name, double alkoholgehalt) {
+    public Drink(long id, String name, double alcoholContent) {
         this.id = id;
         this.name = name;
-        this.alkoholgehalt = alkoholgehalt;
+        this.alcoholContent = alcoholContent;
     }
 
-    // Getter und Setter
-    public int getId() {
-        return id;
-    }
+    public long getId() { return id; }
+    public void setId(long id) { this.id = id; }
 
-    public void setId(int id) {
-        this.id = id;
-    }
+    public String getName() { return name; }
+    public void setName(String name) { this.name = name; }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public double getAlkoholgehalt() {
-        return alkoholgehalt;
-    }
-
-    public void setAlkoholgehalt(double alkoholgehalt) {
-        this.alkoholgehalt = alkoholgehalt;
-    }
+    public double getAlcoholContent() { return alcoholContent; }
+    public void setAlcoholContent(double alcoholContent) { this.alcoholContent = alcoholContent; }
 }
