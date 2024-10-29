@@ -31,7 +31,8 @@
         </activity>
         <activity android:name=".ImpressumActivity">
         </activity>
-
+        <activity android:name=".CalculatorActivity">
+        </activity>
     </application>
 
 </manifest>
