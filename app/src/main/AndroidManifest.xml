@@ -23,8 +23,7 @@
         </activity>
 
         <activity
-            android:name=".ResultActivity">
-
+            android:name=".ErgebnisActivity">
         </activity>
 
     </application>
