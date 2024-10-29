@@ -111,4 +111,50 @@
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"/>
 
+    <!-- ... vorhandener Code ... -->
+
+    <LinearLayout
+        android:id="@+id/getraenke_hinzufuegen_layout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@id/textView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:gravity="center_vertical"
+        android:layout_marginTop="32dp">
+
+        <TextView
+            android:id="@+id/getraenke_hinzufuegen_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Getränke hinzufügen"
+            android:textSize="18dp"
+            android:layout_marginEnd="16dp"/>
+
+        <ImageButton
+            android:id="@+id/getraenke_hinzufuegen_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:src="@android:drawable/ic_input_add" />
+    </LinearLayout>
+
+    <!-- Neuer Reset-Button -->
+    <Button
+        android:id="@+id/button_reset"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Auswahl zurücksetzen"
+        android:layout_marginTop="16dp"
+        app:layout_constraintTop_toBottomOf="@id/getraenke_hinzufuegen_layout"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"/>
+
+    <!-- ... restlicher Code ... -->
+
 </androidx.constraintlayout.widget.ConstraintLayout>

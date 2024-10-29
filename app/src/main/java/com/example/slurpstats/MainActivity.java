@@ -30,9 +30,10 @@ public class MainActivity extends AppCompatActivity implements
     private Button buttonBerechnen;
     private ImageButton buttonGetraenkHinzufuegen;
     private TextView textViewAuswahl;
+    private Button buttonReset;
 
     private DrinkDataSource getraenkDatenquelle;
-    private List<ConsumptionDetail> ausgewählteVerbrauchsdetails = new ArrayList<>();
+    private List<ConsumptionDetail> ausgewaehlteVerbrauchsdetails = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,7 +48,9 @@ public class MainActivity extends AppCompatActivity implements
         buttonBerechnen = findViewById(R.id.BerechnenenButton);
         buttonGetraenkHinzufuegen = findViewById(R.id.getraenke_hinzufuegen_button);
         textViewAuswahl = findViewById(R.id.getraenke_hinzufuegen_text);
+        buttonReset = findViewById(R.id.button_reset);
 
+        buttonReset.setOnClickListener(this);
         buttonBerechnen.setOnClickListener(this);
         buttonGetraenkHinzufuegen.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -85,7 +88,7 @@ public class MainActivity extends AppCompatActivity implements
                 ConsumptionDetail detail = new ConsumptionDetail();
                 detail.setDrinkId(getraenk.getId());
                 detail.setAmount(menge);
-                ausgewählteVerbrauchsdetails.add(detail);
+                ausgewaehlteVerbrauchsdetails.add(detail);
 
                 String aktuelleAuswahl = textViewAuswahl.getText().toString();
                 String neueAuswahl = aktuelleAuswahl + "\n" + getraenkName + ": " + menge + " ml";
@@ -100,46 +103,63 @@ public class MainActivity extends AppCompatActivity implements
         }
     }
 
-    @Override
     public void onClick(View v) {
-        String gewichtInput = editTextGewicht.getText().toString();
-        String geschlechtInput = spinnerGeschlecht.getSelectedItem().toString();
-
-        try {
-            double gewicht = Double.parseDouble(gewichtInput);
-
-            double blutalkoholwert = berechneBlutalkoholwert(gewicht, geschlechtInput, ausgewählteVerbrauchsdetails);
-
-            ResultDataSource ergebnisDatenquelle = new ResultDataSource(this);
-            ergebnisDatenquelle.open();
-
-            int ergebnisNummer = ergebnisDatenquelle.getNumberOfResults() + 1;
-            String titel = "Ergebnis Nr. " + ergebnisNummer;
-            String aktuellesDatum = new SimpleDateFormat("dd.MM.yyyy HH:mm:ss",
-                    Locale.getDefault()).format(new Date());
-
-            Result ergebnis = ergebnisDatenquelle.addResult(geschlechtInput, gewicht, blutalkoholwert, aktuellesDatum, titel);
-
-            ConsumptionDetailDataSource verbrauchsdetailDatenquelle = new ConsumptionDetailDataSource(this);
-            verbrauchsdetailDatenquelle.open();
-            for (ConsumptionDetail detail : ausgewählteVerbrauchsdetails) {
-                detail.setResultId(ergebnis.getId());
-                verbrauchsdetailDatenquelle.addConsumptionDetail(detail.getResultId(), detail.getDrinkId(), detail.getAmount());
-            }
-            verbrauchsdetailDatenquelle.close();
-            ergebnisDatenquelle.close();
-
-            Intent intent = new Intent(this, ErgebnisActivity.class);
-            intent.putExtra("ergebnis_id", ergebnis.getId());
-            startActivity(intent);
-
-        } catch (NumberFormatException e) {
-            Toast.makeText(this, "Bitte geben Sie ein gültiges Gewicht ein.", Toast.LENGTH_SHORT).show();
-        } catch (Exception e) {
-            Log.e("MainActivity", "Fehler bei der Berechnung", e);
-            Toast.makeText(this, "Ein Fehler ist aufgetreten.", Toast.LENGTH_SHORT).show();
+        if (v.getId() == R.id.BerechnenenButton) {
+            // Berechnung durchführen
+            berechnungDurchfuehren();
+        } else if (v.getId() == R.id.button_reset) {
+            // Reset-Funktion ausführen
+            auswahlZuruecksetzen();
         }
     }
+
+    private void auswahlZuruecksetzen() {
+        ausgewaehlteVerbrauchsdetails.clear();
+        textViewAuswahl.setText("Ausgewählte Getränke:");
+        Toast.makeText(this, "Auswahl zurückgesetzt.", Toast.LENGTH_SHORT).show();
+    }
+
+
+
+private void berechnungDurchfuehren() {
+    String gewichtInput = editTextGewicht.getText().toString();
+    String geschlechtInput = spinnerGeschlecht.getSelectedItem().toString();
+
+    try {
+        double gewicht = Double.parseDouble(gewichtInput);
+
+        double blutalkoholwert = berechneBlutalkoholwert(gewicht, geschlechtInput, ausgewaehlteVerbrauchsdetails);
+
+        ResultDataSource ergebnisDatenquelle = new ResultDataSource(this);
+        ergebnisDatenquelle.open();
+
+        int ergebnisNummer = ergebnisDatenquelle.getNumberOfResults() + 1;
+        String titel = "Ergebnis Nr. " + ergebnisNummer;
+        String aktuellesDatum = new SimpleDateFormat("dd.MM.yyyy HH:mm:ss",
+                Locale.getDefault()).format(new Date());
+
+        Result ergebnis = ergebnisDatenquelle.addResult(geschlechtInput, gewicht, blutalkoholwert, aktuellesDatum, titel);
+
+        ConsumptionDetailDataSource verbrauchsdetailDatenquelle = new ConsumptionDetailDataSource(this);
+        verbrauchsdetailDatenquelle.open();
+        for (ConsumptionDetail detail : ausgewaehlteVerbrauchsdetails) {
+            detail.setResultId(ergebnis.getId());
+            verbrauchsdetailDatenquelle.addConsumptionDetail(detail.getResultId(), detail.getDrinkId(), detail.getAmount());
+        }
+        verbrauchsdetailDatenquelle.close();
+        ergebnisDatenquelle.close();
+
+        Intent intent = new Intent(this, ErgebnisActivity.class);
+        intent.putExtra("ergebnis_id", ergebnis.getId());
+        startActivity(intent);
+
+    } catch (NumberFormatException e) {
+        Toast.makeText(this, "Bitte geben Sie ein gültiges Gewicht ein.", Toast.LENGTH_SHORT).show();
+    } catch (Exception e) {
+        Log.e("MainActivity", "Fehler bei der Berechnung", e);
+        Toast.makeText(this, "Ein Fehler ist aufgetreten.", Toast.LENGTH_SHORT).show();
+    }
+}
 
     private double berechneBlutalkoholwert(double gewicht, String geschlecht, List<ConsumptionDetail> verbrauchsdetails) {
         double gesamterAlkoholInGramm = 0.0;
