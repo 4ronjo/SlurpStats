@@ -25,6 +25,12 @@
         <activity
             android:name=".ErgebnisActivity">
         </activity>
+        <activity android:name=".ErgebnisListActivity">
+        </activity>
+        <activity android:name=".HilfeActivity">
+        </activity>
+        <activity android:name=".ImpressumActivity">
+        </activity>
 
     </application>
 

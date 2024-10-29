@@ -3,7 +3,6 @@ package com.example.slurpstats;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -11,24 +10,12 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-import androidx.drawerlayout.widget.DrawerLayout;
-
-import com.example.slurpstats.ResultDataSource;
-import com.example.slurpstats.Result;
-import com.google.android.material.navigation.NavigationView;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class ErgebnisListActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
-
-    private DrawerLayout drawerLayout;
-    private NavigationView navigationView;
-    private Toolbar toolbar;
+public class ErgebnisListActivity extends BaseActivity {
 
     private ListView listViewErgebnisse;
     private TextView textViewAnzahlErgebnisse;
@@ -43,22 +30,9 @@ public class ErgebnisListActivity extends AppCompatActivity implements Navigatio
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_ergebnis);
 
-        // Toolbar einrichten
-        toolbar = findViewById(R.id.my_toolbar);
-        setSupportActionBar(toolbar);
+        setupNavigationDrawer();
+
         getSupportActionBar().setTitle("Gespeicherte Ergebnisse");
-
-        // Navigation Drawer einrichten
-        drawerLayout = findViewById(R.id.drawer_layout_ergebnis_liste);
-        navigationView = findViewById(R.id.navigation_view_ergebnis_liste);
-        navigationView.setNavigationItemSelectedListener(this);
-
-        // Hamburger-Menü Icon hinzufügen
-        androidx.appcompat.app.ActionBarDrawerToggle toggle = new androidx.appcompat.app.ActionBarDrawerToggle(
-                this, drawerLayout, toolbar,
-                R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        drawerLayout.addDrawerListener(toggle);
-        toggle.syncState();
 
         // Views initialisieren
         listViewErgebnisse = findViewById(R.id.list_view_ergebnisse);
@@ -133,28 +107,5 @@ public class ErgebnisListActivity extends AppCompatActivity implements Navigatio
     protected void onDestroy() {
         super.onDestroy();
         resultDataSource.close();
-    }
-
-    // Navigation Drawer Menüauswahl behandeln
-    @Override
-    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-        drawerLayout.closeDrawers();
-        int id = item.getItemId();
-
-        if (id == R.id.nav_home) {
-            Intent intent = new Intent(this, MainActivity.class);
-            startActivity(intent);
-            finish(); // Optional: Beenden Sie die aktuelle Activity
-        } else if (id == R.id.nav_help) {
-            Intent intent = new Intent(this, HilfeActivity.class);
-            startActivity(intent);
-        } else if (id == R.id.nav_results) {
-            // Aktuelle Activity
-        } else if (id == R.id.nav_impressum) {
-            Intent intent = new Intent(this, ImpressumActivity.class);
-            startActivity(intent);
-        }
-
-        return true;
     }
 }

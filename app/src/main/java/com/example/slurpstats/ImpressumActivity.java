@@ -1,10 +1,9 @@
 package com.example.slurpstats;
 
 import android.os.Bundle;
-import androidx.appcompat.app.AppCompatActivity;
 import android.widget.TextView;
 
-public class ImpressumActivity extends AppCompatActivity {
+public class ImpressumActivity extends BaseActivity {
 
     private TextView textViewImpressum;
 
@@ -12,6 +11,11 @@ public class ImpressumActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_impressum);
+
+        setupNavigationDrawer();
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setTitle("Impressum");
+        }
 
         textViewImpressum = findViewById(R.id.text_view_impressum);
         textViewImpressum.setText(getImpressumText());

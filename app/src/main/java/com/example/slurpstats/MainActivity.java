@@ -3,7 +3,6 @@ package com.example.slurpstats;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -12,13 +11,6 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.ActionBarDrawerToggle;
-import androidx.drawerlayout.widget.DrawerLayout;
-import com.google.android.material.navigation.NavigationView;
-
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.FragmentManager;
 
 import java.text.SimpleDateFormat;
@@ -27,9 +19,8 @@ import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
-// Clean-Code: Verwendung von @Override
-public class MainActivity extends AppCompatActivity implements
-        View.OnClickListener, GetraenkDialogFragment.GetraenkDialogListener, NavigationView.OnNavigationItemSelectedListener {
+public class MainActivity extends BaseActivity implements
+        View.OnClickListener, GetraenkDialogFragment.GetraenkDialogListener {
 
     private EditText editTextGewicht;
     private Spinner spinnerGeschlecht;
@@ -37,10 +28,6 @@ public class MainActivity extends AppCompatActivity implements
     private ImageButton buttonGetraenkHinzufuegen;
     private TextView textViewAuswahl;
     private Button buttonReset;
-    private DrawerLayout drawerLayout;
-    private ActionBarDrawerToggle toggle;
-    private NavigationView navigationView;
-
 
     private DrinkDataSource getraenkDatenquelle;
     private List<ConsumptionDetail> ausgewaehlteVerbrauchsdetails = new ArrayList<>();
@@ -50,27 +37,16 @@ public class MainActivity extends AppCompatActivity implements
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main); // Layout-Datei entsprechend anpassen
 
-        Toolbar toolbar = findViewById(R.id.my_toolbar);
-        setSupportActionBar(toolbar);
-
-        drawerLayout = findViewById(R.id.drawer_layout);
-        navigationView = findViewById(R.id.nav_home);
-
-        toggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar,
-                R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-
-        drawerLayout.addDrawerListener(toggle);
-        toggle.syncState();
-
-        navigationView.setNavigationItemSelectedListener(this);
-
-
+        setupNavigationDrawer();
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setTitle("Slurp Stats");
+        }
 
         editTextGewicht = findViewById(R.id.edit_text_gewicht);
         spinnerGeschlecht = findViewById(R.id.spinner_geschlecht);
         buttonBerechnen = findViewById(R.id.BerechnenenButton);
         buttonGetraenkHinzufuegen = findViewById(R.id.getraenke_hinzufuegen_button);
-        textViewAuswahl = findViewById(R.id.getraenke_hinzufuegen_text);
+        textViewAuswahl = findViewById(R.id.auswahl_anzeige);
         buttonReset = findViewById(R.id.button_reset);
 
         buttonReset.setOnClickListener(this);
@@ -199,26 +175,5 @@ private void berechnungDurchfuehren() {
         double blutalkoholkonzentration = (gesamterAlkoholInGramm) / (gewicht * reduktionsfaktor);
 
         return blutalkoholkonzentration;
-    }
-
-    @Override
-    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-        drawerLayout.closeDrawers();
-        int id = item.getItemId();
-
-        if (id == R.id.nav_home) {
-
-        } else if (id == R.id.nav_help) {
-            Intent intent = new Intent(this, HilfeActivity.class);
-            startActivity(intent);
-        } else if (id == R.id.nav_results) {
-            Intent intent = new Intent(this, ErgebnisListActivity.class);
-            startActivity(intent);
-        } else if (id == R.id.nav_impressum) {
-            Intent intent = new Intent(this, ImpressumActivity.class);
-            startActivity(intent);
-        }
-
-        return true;
     }
 }

@@ -4,11 +4,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.TextView;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import java.util.List;
 
-public class ErgebnisActivity extends AppCompatActivity {
+public class ErgebnisActivity extends BaseActivity {
 
     private TextView textViewErgebnisDetails;
 
@@ -17,8 +15,11 @@ public class ErgebnisActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ergebnis);
 
+        setupNavigationDrawer();
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setTitle("Dein Alkoholblutkonzentration");
+        }
         textViewErgebnisDetails = findViewById(R.id.ergebnis_view);
-
         Intent intent = getIntent();
         long ergebnisId = intent.getLongExtra("ergebnis_id", -1);
 
