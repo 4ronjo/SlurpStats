@@ -5,8 +5,6 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
-import com.example.slurpstats.Result;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -67,12 +65,14 @@ public class ResultDataSource {
         return results;
     }
 
-    // Methode, um ein Ergebnis zu löschen
     public void deleteResult(long id) {
-        // Ergebnis löschen
         database.delete(DatabaseHelper.TABLE_RESULTS, DatabaseHelper.COLUMN_ID + " = ?", new String[]{String.valueOf(id)});
-        // Zugehörige ConsumptionDetails löschen
         database.delete(DatabaseHelper.TABLE_CONSUMPTION_DETAILS, DatabaseHelper.COLUMN_RESULT_ID + " = ?", new String[]{String.valueOf(id)});
+    }
+
+    public void deleteAllResults() {
+        database.delete(DatabaseHelper.TABLE_RESULTS, null, null);
+        database.delete(DatabaseHelper.TABLE_CONSUMPTION_DETAILS, null, null);
     }
 
     // Hilfsmethode, um einen Cursor in ein Result-Objekt zu konvertieren
