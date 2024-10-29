@@ -1,11 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Slurp Stats</string>
+
     <string-array name="Biologisches_Geschlecht">
         <item>Mann</item>
         <item>Frau</item>
     </string-array>
+
     <string-array name="Getraenke_Auswahl">
         <item>Bier</item>
         <item>Wodka</item>
     </string-array>
+
+    <string name="hilfe_text">
+        <![CDATA[
+        <h2>Willkommen bei SlurpStats!</h2>
+        Diese App ermöglicht die Berechnung Ihres Blutalkoholgehalts basierend auf der Widmark-Formel.
+        <br/><br/>
+        <b>Formel:</b><br/>
+        Blutalkoholkonzentration = (A) / (r × m)
+        <br/><br/>
+        <b>Erklärung:</b><br/>
+        - A: Aufgenommene Alkoholmenge in Gramm<br/>
+        - r: Verteilungsfaktor (0,68 für Männer, 0,55 für Frauen)<br/>
+        - m: Körpergewicht in kg
+        <br/><br/>
+        Bitte beachten Sie, dass diese Berechnung nur eine Schätzung ist und individuelle Faktoren nicht berücksichtigt.
+        <br/><br/>
+        <b>Hinweis:</b> Trinken Sie verantwortungsvoll und niemals unter Alkoholeinfluss fahren.
+        ]]>
+    </string>
+    <string name="navigation_drawer_open">
+        Navigation
+    </string>
+    <string name="navigation_drawer_close">
+        Schließen
+    </string>
 </resources>

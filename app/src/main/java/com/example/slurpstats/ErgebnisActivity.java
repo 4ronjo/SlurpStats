@@ -17,7 +17,7 @@ public class ErgebnisActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ergebnis);
 
-        textViewErgebnisDetails = findViewById(R.id.Ergebnis);
+        textViewErgebnisDetails = findViewById(R.id.ergebnis_view);
 
         Intent intent = getIntent();
         long ergebnisId = intent.getLongExtra("ergebnis_id", -1);

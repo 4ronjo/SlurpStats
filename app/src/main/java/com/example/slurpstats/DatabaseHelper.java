@@ -52,6 +52,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 + ")";
         db.execSQL(CREATE_TABLE_DRINKS);
 
+        db.execSQL("PRAGMA foreign_keys=ON;");
+
         // Create Results Table
         String CREATE_TABLE_RESULTS = "CREATE TABLE " + TABLE_RESULTS + "("
                 + COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
@@ -69,7 +71,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 + COLUMN_RESULT_ID + " INTEGER, "
                 + COLUMN_DRINK_ID + " INTEGER, "
                 + COLUMN_AMOUNT + " REAL, "
-                + "FOREIGN KEY(" + COLUMN_RESULT_ID + ") REFERENCES " + TABLE_RESULTS + "(" + COLUMN_ID + "), "
+                + "FOREIGN KEY(" + COLUMN_RESULT_ID + ") REFERENCES " + TABLE_RESULTS + "(" + COLUMN_ID + ") ON DELETE CASCADE, "
                 + "FOREIGN KEY(" + COLUMN_DRINK_ID + ") REFERENCES " + TABLE_DRINKS + "(" + COLUMN_DRINK_ID + ")"
                 + ")";
         db.execSQL(CREATE_TABLE_CONSUMPTION_DETAILS);

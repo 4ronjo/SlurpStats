@@ -5,12 +5,10 @@
     android:layout_height="match_parent">
 
     <TextView
-        android:id="@+id/Ergebnis"
+        android:id="@+id/ergebnis_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Getränke hinzufügen"
-        android:textSize="18dp"
-        tools:layout_editor_absoluteX="123dp"
-        tools:layout_editor_absoluteY="176dp" />
-
+        android:text="TextView"
+        tools:layout_editor_absoluteX="174dp"
+        tools:layout_editor_absoluteY="345dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>
