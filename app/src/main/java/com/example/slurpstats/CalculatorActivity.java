@@ -60,7 +60,6 @@ public class CalculatorActivity extends BaseActivity implements
         });
 
         buttonabbrechen.setOnClickListener(view -> finish());
-
         getraenkDatenquelle = new DrinkDataSource(this);
         getraenkDatenquelle.open();
 
@@ -81,9 +80,13 @@ public class CalculatorActivity extends BaseActivity implements
     }
 
     @Override
-    public void onGetraenkSelected(String getraenkName, String mengeStr) {
+    public void onGetraenkSelected(String getraenkNameMitProzent, String mengeStr) {
         try {
             double menge = Double.parseDouble(mengeStr);
+
+            // Extrahieren des Getränkenamens vor " ("
+            String getraenkName = getraenkNameMitProzent.split(" \\(")[0];
+
             Drink getraenk = getraenkDatenquelle.getDrinkByName(getraenkName);
 
             if (getraenk != null) {
@@ -95,14 +98,17 @@ public class CalculatorActivity extends BaseActivity implements
                 String aktuelleAuswahl = textViewAuswahl.getText().toString();
                 String neueAuswahl = aktuelleAuswahl + "\n" + getraenkName + ": " + menge + " ml";
                 textViewAuswahl.setText(neueAuswahl);
+            } else {
+                Toast.makeText(this, "Getränk nicht gefunden.", Toast.LENGTH_SHORT).show();
             }
         } catch (NumberFormatException e) {
             Toast.makeText(this, "Bitte geben Sie eine gültige Menge ein.", Toast.LENGTH_SHORT).show();
         } catch (Exception e) {
-            Log.e("MainActivity", "Fehler bei der Getränkeauswahl", e);
+            Log.e("CalculatorActivity", "Fehler bei der Getränkeauswahl", e);
             Toast.makeText(this, "Ein Fehler ist aufgetreten.", Toast.LENGTH_SHORT).show();
         }
     }
+
 
     public void onClick(View v) {
         if (v.getId() == R.id.BerechnenenButton) {

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <EditText
+        android:id="@+id/edit_text_getraenk_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Getränkename" />
+
+    <EditText
+        android:id="@+id/edit_text_alkoholgehalt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Alkoholgehalt in Prozent"
+        android:inputType="numberDecimal"
+        android:layout_marginTop="8dp"/>
+
+    <Button
+        android:id="@+id/button_speichern"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Speichern"
+        android:layout_marginTop="16dp"/>
+
+</LinearLayout>

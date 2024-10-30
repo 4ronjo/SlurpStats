@@ -64,7 +64,6 @@ public class DrinkDataSource {
     // Weitere Methoden wie addDrink, getDrinkById, getDrinkByName usw.
     // ...
 
-    // Beispiel für addDrink-Methode
     public Drink addDrink(String name, double alcoholContent) {
         ContentValues values = new ContentValues();
         values.put(DatabaseHelper.COLUMN_DRINK_NAME, name);
