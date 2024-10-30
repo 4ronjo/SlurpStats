@@ -26,7 +26,7 @@ public class CalculatorActivity extends BaseActivity implements
     private Button buttonBerechnen;
     private ImageButton buttonGetraenkHinzufuegen;
     private TextView textViewAuswahl;
-    private Button buttonReset;
+    private ImageButton buttonReset;
     private Button buttonabbrechen;
 
     private DrinkDataSource getraenkDatenquelle;
