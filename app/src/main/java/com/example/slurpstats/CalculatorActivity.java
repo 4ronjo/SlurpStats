@@ -27,6 +27,7 @@ public class CalculatorActivity extends BaseActivity implements
     private ImageButton buttonGetraenkHinzufuegen;
     private TextView textViewAuswahl;
     private Button buttonReset;
+    private Button buttonabbrechen;
 
     private DrinkDataSource getraenkDatenquelle;
     private List<ConsumptionDetail> ausgewaehlteVerbrauchsdetails = new ArrayList<>();
@@ -47,6 +48,7 @@ public class CalculatorActivity extends BaseActivity implements
         buttonGetraenkHinzufuegen = findViewById(R.id.getraenke_hinzufuegen_button);
         textViewAuswahl = findViewById(R.id.auswahl_anzeige);
         buttonReset = findViewById(R.id.button_reset);
+        buttonabbrechen = findViewById(R.id.button_abbrechen);
 
         buttonReset.setOnClickListener(this);
         buttonBerechnen.setOnClickListener(this);
@@ -56,6 +58,8 @@ public class CalculatorActivity extends BaseActivity implements
                 getraenkDialogOeffnen();
             }
         });
+
+        buttonabbrechen.setOnClickListener(view -> finish());
 
         getraenkDatenquelle = new DrinkDataSource(this);
         getraenkDatenquelle.open();
