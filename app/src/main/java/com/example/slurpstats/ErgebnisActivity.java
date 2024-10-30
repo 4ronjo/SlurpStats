@@ -2,6 +2,7 @@ package com.example.slurpstats;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import java.util.List;
@@ -9,6 +10,7 @@ import java.util.List;
 public class ErgebnisActivity extends BaseActivity {
 
     private TextView textViewErgebnisDetails;
+    private ImageButton backButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,7 +21,12 @@ public class ErgebnisActivity extends BaseActivity {
         if (getSupportActionBar() != null) {
             getSupportActionBar().setTitle("Dein Alkoholblutkonzentration");
         }
+
         textViewErgebnisDetails = findViewById(R.id.ergebnis_view);
+        backButton = findViewById(R.id.back_button);
+
+        backButton.setOnClickListener(view -> finish());
+
         Intent intent = getIntent();
         long ergebnisId = intent.getLongExtra("ergebnis_id", -1);
 
@@ -28,6 +35,7 @@ public class ErgebnisActivity extends BaseActivity {
         } else {
             textViewErgebnisDetails.setText("Kein Ergebnis zum Anzeigen.");
         }
+
     }
 
     private void ergebnisAnzeigen(long ergebnisId) {
