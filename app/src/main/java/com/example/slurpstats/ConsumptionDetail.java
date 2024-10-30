@@ -6,7 +6,6 @@ public class ConsumptionDetail {
     private long drinkId;
     private double amount;
 
-    // Konstruktoren
     public ConsumptionDetail() {}
 
     public ConsumptionDetail(long id, long resultId, long drinkId, double amount) {
@@ -16,7 +15,6 @@ public class ConsumptionDetail {
         this.amount = amount;
     }
 
-    // Getter und Setter
     public long getId() { return id; }
     public void setId(long id) { this.id = id; }
 

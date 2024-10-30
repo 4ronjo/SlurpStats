@@ -28,7 +28,6 @@ public class ResultListAdapter extends ArrayAdapter<Result> {
     public void setSelectionMode(boolean selectionMode) {
         isSelectionMode = selectionMode;
         if (!selectionMode) {
-            // Checkbox-Zustände zurücksetzen
             checkedStates = new ArrayList<>(Collections.nCopies(results.size(), false));
         }
         notifyDataSetChanged();

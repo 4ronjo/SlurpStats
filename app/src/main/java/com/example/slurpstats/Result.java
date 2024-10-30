@@ -8,7 +8,6 @@ public class Result {
     private String date;
     private String title;
 
-    // Constructors
     public Result() {}
 
     public Result(long id, String gender, double weight, double bloodAlcoholContent, String date, String title) {
@@ -20,7 +19,6 @@ public class Result {
         this.title = title;
     }
 
-    // Getters and Setters
     public long getId() { return id; }
     public void setId(long id) { this.id = id; }
 

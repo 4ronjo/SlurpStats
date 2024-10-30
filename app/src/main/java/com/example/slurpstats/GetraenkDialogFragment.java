@@ -1,7 +1,6 @@
 package com.example.slurpstats;
 
 import android.app.Dialog;
-import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -41,7 +40,6 @@ public class GetraenkDialogFragment extends DialogFragment {
     @NonNull
     @Override
     public Dialog onCreateDialog(@Nullable Bundle savedInstanceState) {
-        // Verwenden Sie das neue benutzerdefinierte Layout
         AlertDialog.Builder builder = new AlertDialog.Builder(requireActivity());
 
         LayoutInflater inflater = requireActivity().getLayoutInflater();
@@ -93,7 +91,6 @@ public class GetraenkDialogFragment extends DialogFragment {
         getraenkeListe = getraenkDatenquelle.getAllDrinks();
         getraenkDatenquelle.close();
 
-        // Adapter aktualisieren
         adapter.clear();
         adapter.addAll(getraenkeListe.stream()
                 .map(getraenk -> getraenk.getName() + " (" + getraenk.getAlcoholContent() + "%)")

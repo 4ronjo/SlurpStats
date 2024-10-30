@@ -47,7 +47,6 @@ public class ErgebnisListActivity extends BaseActivity {
             public void onItemClick(AdapterView<?> adapterView, View view,
                                     int position, long id) {
                 if (isSelectionMode) {
-                    // Checkbox-Zustand umschalten
                     CheckBox checkBox = view.findViewById(R.id.result_checkbox);
                     boolean newState = !checkBox.isChecked();
                     checkBox.setChecked(newState);
@@ -122,7 +121,7 @@ public class ErgebnisListActivity extends BaseActivity {
     private void enterSelectionMode() {
         isSelectionMode = true;
         adapter.setSelectionMode(true);
-        invalidateOptionsMenu(); // Menü aktualisieren
+        invalidateOptionsMenu();
         if (getSupportActionBar() != null) {
             getSupportActionBar().setTitle("Einträge auswählen");
         }
@@ -142,11 +141,9 @@ public class ErgebnisListActivity extends BaseActivity {
         int id = item.getItemId();
 
         if (id == R.id.action_edit) {
-            // Auswahlmodus aktivieren
             enterSelectionMode();
             return true;
         } else if (id == R.id.action_delete) {
-            // Ausgewählte Einträge löschen
             List<Result> selectedResults = adapter.getSelectedResults();
             if (selectedResults.isEmpty()) {
                 Toast.makeText(this, "Keine Einträge ausgewählt.", Toast.LENGTH_SHORT).show();
@@ -155,7 +152,6 @@ public class ErgebnisListActivity extends BaseActivity {
             }
             return true;
         } else if (id == R.id.action_select_all) {
-            // Alle Einträge auswählen
             adapter.checkedStates = new ArrayList<>(Collections.nCopies(ergebnisListe.size(), true));
             adapter.notifyDataSetChanged();
             return true;

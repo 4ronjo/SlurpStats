@@ -25,17 +25,14 @@ public class ResultDataSource {
         dbHelper = new DatabaseHelper(context);
     }
 
-    // Öffnet die Datenbankverbindung
     public void open() {
         database = dbHelper.getWritableDatabase();
     }
 
-    // Schließt die Datenbankverbindung
     public void close() {
         dbHelper.close();
     }
 
-    // Methode, um ein Ergebnis anhand seiner ID abzurufen
     public Result getResultById(long id) {
         Cursor cursor = database.query(DatabaseHelper.TABLE_RESULTS, allColumns,
                 DatabaseHelper.COLUMN_ID + " = ?", new String[]{String.valueOf(id)}, null, null, null);
@@ -49,7 +46,6 @@ public class ResultDataSource {
         }
     }
 
-    // Methode, um alle Ergebnisse abzurufen
     public List<Result> getAllResults() {
         List<Result> results = new ArrayList<>();
         Cursor cursor = database.query(DatabaseHelper.TABLE_RESULTS, allColumns,
@@ -75,7 +71,6 @@ public class ResultDataSource {
         database.delete(DatabaseHelper.TABLE_CONSUMPTION_DETAILS, null, null);
     }
 
-    // Hilfsmethode, um einen Cursor in ein Result-Objekt zu konvertieren
     private Result cursorToResult(Cursor cursor) {
         Result result = new Result();
         result.setId(cursor.getLong(cursor.getColumnIndexOrThrow(DatabaseHelper.COLUMN_ID)));
@@ -87,7 +82,6 @@ public class ResultDataSource {
         return result;
     }
 
-    // Methode, um ein Ergebnis hinzuzufügen
     public Result addResult(String gender, double weight, double bloodAlcoholContent, String date, String title) {
         ContentValues values = new ContentValues();
         values.put(DatabaseHelper.COLUMN_GENDER, gender);
@@ -108,7 +102,6 @@ public class ResultDataSource {
         }
     }
 
-    // Methode, um die Anzahl der Ergebnisse zu erhalten
     public int getNumberOfResults() {
         Cursor cursor = database.rawQuery("SELECT COUNT(*) FROM " + DatabaseHelper.TABLE_RESULTS, null);
         int count = 0;

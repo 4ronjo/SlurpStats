@@ -5,8 +5,6 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
-import com.example.slurpstats.Drink;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,17 +22,14 @@ public class DrinkDataSource {
         dbHelper = new DatabaseHelper(context);
     }
 
-    // Öffnet die Datenbankverbindung
     public void open() {
         database = dbHelper.getWritableDatabase();
     }
 
-    // Schließt die Datenbankverbindung
     public void close() {
         dbHelper.close();
     }
 
-    // Methode, um alle Getränke abzurufen
     public List<Drink> getAllDrinks() {
         List<Drink> drinks = new ArrayList<>();
 
@@ -52,7 +47,6 @@ public class DrinkDataSource {
         return drinks;
     }
 
-    // Hilfsmethode, um einen Cursor in ein Drink-Objekt zu konvertieren
     private Drink cursorToDrink(Cursor cursor) {
         Drink drink = new Drink();
         drink.setId(cursor.getLong(cursor.getColumnIndexOrThrow(DatabaseHelper.COLUMN_DRINK_ID)));
@@ -61,8 +55,6 @@ public class DrinkDataSource {
         return drink;
     }
 
-    // Weitere Methoden wie addDrink, getDrinkById, getDrinkByName usw.
-    // ...
 
     public Drink addDrink(String name, double alcoholContent) {
         ContentValues values = new ContentValues();
@@ -78,7 +70,6 @@ public class DrinkDataSource {
         return newDrink;
     }
 
-    // Methode, um ein Getränk anhand seines Namens abzurufen
     public Drink getDrinkByName(String name) {
         Cursor cursor = database.query(DatabaseHelper.TABLE_DRINKS, allColumns,
                 DatabaseHelper.COLUMN_DRINK_NAME + " = ?", new String[]{name}, null, null, null);
@@ -92,7 +83,6 @@ public class DrinkDataSource {
         }
     }
 
-    // Methode, um ein Getränk anhand seiner ID abzurufen
     public Drink getDrinkById(long id) {
         Cursor cursor = database.query(DatabaseHelper.TABLE_DRINKS, allColumns,
                 DatabaseHelper.COLUMN_DRINK_ID + " = ?", new String[]{String.valueOf(id)}, null, null, null);
@@ -107,6 +97,6 @@ public class DrinkDataSource {
     }
 
     public void deleteDrink(long id) {
-        database.delete(DatabaseHelper.TABLE_DRINKS, DatabaseHelper.COLUMN_ID + " = ?", new String[]{String.valueOf(id)});
+        database.delete(DatabaseHelper.TABLE_DRINKS, DatabaseHelper.COLUMN_DRINK_ID + " = ?", new String[]{String.valueOf(id)});
     }
 }

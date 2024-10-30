@@ -5,8 +5,6 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
-import com.example.slurpstats.ConsumptionDetail;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,17 +23,14 @@ public class ConsumptionDetailDataSource {
         dbHelper = new DatabaseHelper(context);
     }
 
-    // Open the database
     public void open() {
         database = dbHelper.getWritableDatabase();
     }
 
-    // Close the database
     public void close() {
         dbHelper.close();
     }
 
-    // Add a new consumption detail
     public ConsumptionDetail addConsumptionDetail(long resultId, long drinkId, double amount) {
         ContentValues values = new ContentValues();
         values.put(DatabaseHelper.COLUMN_RESULT_ID, resultId);
@@ -51,7 +46,6 @@ public class ConsumptionDetailDataSource {
         return newDetail;
     }
 
-    // Get all consumption details for a specific result
     public List<ConsumptionDetail> getConsumptionDetailsByResultId(long resultId) {
         List<ConsumptionDetail> details = new ArrayList<>();
 
@@ -68,7 +62,6 @@ public class ConsumptionDetailDataSource {
         return details;
     }
 
-    // Helper method to convert cursor to ConsumptionDetail
     private ConsumptionDetail cursorToConsumptionDetail(Cursor cursor) {
         ConsumptionDetail detail = new ConsumptionDetail();
         detail.setId(cursor.getLong(cursor.getColumnIndexOrThrow(DatabaseHelper.COLUMN_ID)));

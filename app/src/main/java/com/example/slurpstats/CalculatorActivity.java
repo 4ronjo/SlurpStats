@@ -84,7 +84,6 @@ public class CalculatorActivity extends BaseActivity implements
         try {
             double menge = Double.parseDouble(mengeStr);
 
-            // Extrahieren des Getränkenamens vor " ("
             String getraenkName = getraenkNameMitProzent.split(" \\(")[0];
 
             Drink getraenk = getraenkDatenquelle.getDrinkByName(getraenkName);
@@ -133,6 +132,11 @@ public class CalculatorActivity extends BaseActivity implements
         try {
             double gewicht = Double.parseDouble(gewichtInput);
 
+            if (ausgewaehlteVerbrauchsdetails.isEmpty()) {
+                Toast.makeText(this, "Bitte fügen Sie mindestens ein Getränk hinzu", Toast.LENGTH_SHORT).show();
+                return;
+            }
+
             double blutalkoholwert = berechneBlutalkoholwert(gewicht, geschlechtInput, ausgewaehlteVerbrauchsdetails);
 
             ResultDataSource ergebnisDatenquelle = new ResultDataSource(this);
@@ -161,10 +165,11 @@ public class CalculatorActivity extends BaseActivity implements
         } catch (NumberFormatException e) {
             Toast.makeText(this, "Bitte geben Sie ein gültiges Gewicht ein.", Toast.LENGTH_SHORT).show();
         } catch (Exception e) {
-            Log.e("MainActivity", "Fehler bei der Berechnung", e);
+            Log.e("CalculatorActivity", "Fehler bei der Berechnung", e);
             Toast.makeText(this, "Ein Fehler ist aufgetreten.", Toast.LENGTH_SHORT).show();
         }
     }
+
 
     private double berechneBlutalkoholwert(double gewicht, String geschlecht, List<ConsumptionDetail> verbrauchsdetails) {
         double gesamterAlkoholInGramm = 0.0;

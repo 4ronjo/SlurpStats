@@ -52,13 +52,11 @@ public class BeveragesListActivity extends BaseActivity {
             public void onItemClick(AdapterView<?> adapterView, View view,
                                     int position, long id) {
                 if (isSelectionMode) {
-                    // Checkbox-Zustand umschalten
                     CheckBox checkBox = view.findViewById(R.id.drink_checkbox);
                     boolean newState = !checkBox.isChecked();
                     checkBox.setChecked(newState);
                     adapter.checkedStates.set(position, newState);
                 } else {
-                    // Keine Aktion erforderlich, da Getränke keine eigene Seite haben
                     Toast.makeText(BeveragesListActivity.this,
                             "Auswahl: " + getraenkeListe.get(position).getName(),
                             Toast.LENGTH_SHORT).show();
@@ -127,7 +125,7 @@ public class BeveragesListActivity extends BaseActivity {
     private void enterSelectionMode() {
         isSelectionMode = true;
         adapter.setSelectionMode(true);
-        invalidateOptionsMenu(); // Menü aktualisieren
+        invalidateOptionsMenu();
         if (getSupportActionBar() != null) {
             getSupportActionBar().setTitle("Getränke auswählen");
         }
@@ -147,11 +145,9 @@ public class BeveragesListActivity extends BaseActivity {
         int id = item.getItemId();
 
         if (id == R.id.action_edit) {
-            // Auswahlmodus aktivieren
             enterSelectionMode();
             return true;
         } else if (id == R.id.action_delete) {
-            // Ausgewählte Einträge löschen
             List<Drink> selectedDrinks = adapter.getSelectedDrinks();
             if (selectedDrinks.isEmpty()) {
                 Toast.makeText(this, "Keine Getränke ausgewählt.", Toast.LENGTH_SHORT).show();
@@ -160,7 +156,6 @@ public class BeveragesListActivity extends BaseActivity {
             }
             return true;
         } else if (id == R.id.action_select_all) {
-            // Alle Einträge auswählen
             adapter.checkedStates = new ArrayList<>(Collections.nCopies(getraenkeListe.size(), true));
             adapter.notifyDataSetChanged();
             return true;

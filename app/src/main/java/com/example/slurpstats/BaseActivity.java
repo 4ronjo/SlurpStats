@@ -31,10 +31,9 @@ public abstract class BaseActivity extends AppCompatActivity implements Navigati
         drawerLayout = findViewById(R.id.drawer_layout);
         navigationView = findViewById(R.id.navigation_view);
 
-        // Navigation Listener setzen
+
         navigationView.setNavigationItemSelectedListener(this);
 
-        // Hamburger-Menü Icon hinzufügen
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawerLayout, toolbar,
                 R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -43,7 +42,6 @@ public abstract class BaseActivity extends AppCompatActivity implements Navigati
         toggle.syncState();
     }
 
-    // Navigation Drawer Menüauswahl behandeln
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         drawerLayout.closeDrawers();
@@ -52,7 +50,6 @@ public abstract class BaseActivity extends AppCompatActivity implements Navigati
         if (id == R.id.nav_home) {
             Intent intent = new Intent(this, MainActivity.class);
             startActivity(intent);
-            finish(); // Optional: Beenden Sie die aktuelle Activity
         }else if (id == R.id.nav_results) {
             Intent intent = new Intent(this, ErgebnisListActivity.class);
             startActivity(intent);
