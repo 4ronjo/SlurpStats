@@ -105,4 +105,8 @@ public class DrinkDataSource {
             return null;
         }
     }
+
+    public void deleteDrink(long id) {
+        database.delete(DatabaseHelper.TABLE_DRINKS, DatabaseHelper.COLUMN_ID + " = ?", new String[]{String.valueOf(id)});
+    }
 }

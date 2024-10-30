@@ -53,11 +53,13 @@ public abstract class BaseActivity extends AppCompatActivity implements Navigati
             Intent intent = new Intent(this, MainActivity.class);
             startActivity(intent);
             finish(); // Optional: Beenden Sie die aktuelle Activity
+        }else if (id == R.id.nav_results) {
+            Intent intent = new Intent(this, ErgebnisListActivity.class);
+            startActivity(intent);
+        } else if (id == R.id.nav_beverages) {
+            startActivity(new Intent(this, BeveragesListActivity.class));
         } else if (id == R.id.nav_help) {
             Intent intent = new Intent(this, HilfeActivity.class);
-            startActivity(intent);
-        } else if (id == R.id.nav_results) {
-            Intent intent = new Intent(this, ErgebnisListActivity.class);
             startActivity(intent);
         } else if (id == R.id.nav_impressum) {
             Intent intent = new Intent(this, ImpressumActivity.class);
