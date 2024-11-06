@@ -48,19 +48,30 @@ public abstract class BaseActivity extends AppCompatActivity implements Navigati
         int id = item.getItemId();
 
         if (id == R.id.nav_home) {
-            Intent intent = new Intent(this, MainActivity.class);
-            startActivity(intent);
+            if (!this.getClass().equals(MainActivity.class)) {
+                Intent intent = new Intent(this, MainActivity.class);
+                startActivity(intent);
+            }
         }else if (id == R.id.nav_results) {
-            Intent intent = new Intent(this, ErgebnisListActivity.class);
-            startActivity(intent);
+            if (!this.getClass().equals(ErgebnisListActivity.class)) {
+                Intent intent = new Intent(this, ErgebnisListActivity.class);
+                startActivity(intent);
+            }
         } else if (id == R.id.nav_beverages) {
-            startActivity(new Intent(this, BeveragesListActivity.class));
+            if (!this.getClass().equals(BeveragesListActivity.class)) {
+                Intent intent = new Intent(this, BeveragesListActivity.class);
+                startActivity(intent);
+            }
         } else if (id == R.id.nav_help) {
-            Intent intent = new Intent(this, HilfeActivity.class);
-            startActivity(intent);
+            if(!this.getClass().equals(HilfeActivity.class)){
+                Intent intent = new Intent(this, HilfeActivity.class);
+                startActivity(intent);
+            }
         } else if (id == R.id.nav_impressum) {
-            Intent intent = new Intent(this, ImpressumActivity.class);
-            startActivity(intent);
+            if(!this.getClass().equals(ImpressumActivity.class)){
+                Intent intent = new Intent(this, ImpressumActivity.class);
+                startActivity(intent);
+            }
         }
 
         return true;
