@@ -39,7 +39,7 @@ public class CalculatorActivity extends BaseActivity implements
 
         setupNavigationDrawer();
         if (getSupportActionBar() != null) {
-            getSupportActionBar().setTitle("Slurp Stats");
+            getSupportActionBar().setTitle(getString(R.string.app_name));
         }
 
         editTextGewicht = findViewById(R.id.edit_text_gewicht);
@@ -98,13 +98,13 @@ public class CalculatorActivity extends BaseActivity implements
                 String neueAuswahl = aktuelleAuswahl + "\n" + getraenkName + ": " + menge + " ml";
                 textViewAuswahl.setText(neueAuswahl);
             } else {
-                Toast.makeText(this, "Getränk nicht gefunden.", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, getString(R.string.Drink_not_found), Toast.LENGTH_SHORT).show();
             }
         } catch (NumberFormatException e) {
-            Toast.makeText(this, "Bitte geben Sie eine gültige Menge ein.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, getString(R.string.Valid_amount), Toast.LENGTH_SHORT).show();
         } catch (Exception e) {
             Log.e("CalculatorActivity", "Fehler bei der Getränkeauswahl", e);
-            Toast.makeText(this, "Ein Fehler ist aufgetreten.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, getString(R.string.Error), Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -119,8 +119,8 @@ public class CalculatorActivity extends BaseActivity implements
 
     private void auswahlZuruecksetzen() {
         ausgewaehlteVerbrauchsdetails.clear();
-        textViewAuswahl.setText("Ausgewählte Getränke:");
-        Toast.makeText(this, "Auswahl zurückgesetzt.", Toast.LENGTH_SHORT).show();
+        textViewAuswahl.setText(getString(R.string.Selected_Drinks));
+        Toast.makeText(this, getString(R.string.Selection_reset), Toast.LENGTH_SHORT).show();
     }
 
 
@@ -133,7 +133,7 @@ public class CalculatorActivity extends BaseActivity implements
             double gewicht = Double.parseDouble(gewichtInput);
 
             if (ausgewaehlteVerbrauchsdetails.isEmpty()) {
-                Toast.makeText(this, "Bitte fügen Sie mindestens ein Getränk hinzu", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, getString(R.string.Atleast_one_drink), Toast.LENGTH_SHORT).show();
                 return;
             }
 
@@ -143,7 +143,7 @@ public class CalculatorActivity extends BaseActivity implements
             ergebnisDatenquelle.open();
 
             int ergebnisNummer = ergebnisDatenquelle.getNumberOfResults() + 1;
-            String titel = "Ergebnis Nr. " + ergebnisNummer;
+            String titel = getString(R.string.Result_nr) + " " + ergebnisNummer;
             String aktuellesDatum = new SimpleDateFormat("dd.MM.yyyy HH:mm:ss",
                     Locale.getDefault()).format(new Date());
 
@@ -163,10 +163,10 @@ public class CalculatorActivity extends BaseActivity implements
             startActivity(intent);
 
         } catch (NumberFormatException e) {
-            Toast.makeText(this, "Bitte geben Sie ein gültiges Gewicht ein.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, getString(R.string.Valid_weigth), Toast.LENGTH_SHORT).show();
         } catch (Exception e) {
             Log.e("CalculatorActivity", "Fehler bei der Berechnung", e);
-            Toast.makeText(this, "Ein Fehler ist aufgetreten.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, getString(R.string.Error), Toast.LENGTH_SHORT).show();
         }
     }
 

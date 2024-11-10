@@ -31,7 +31,7 @@ public class ErgebnisListActivity extends BaseActivity {
         setupNavigationDrawer();
 
         if (getSupportActionBar() != null) {
-            getSupportActionBar().setTitle("Gespeicherte Ergebnisse");
+            getSupportActionBar().setTitle(getString(R.string.Saved_results));
         }
 
         listViewErgebnisse = findViewById(R.id.list_view_ergebnisse);
@@ -82,9 +82,10 @@ public class ErgebnisListActivity extends BaseActivity {
 
         int anzahlErgebnisse = ergebnisListe.size();
         if (anzahlErgebnisse == 0) {
-            textViewAnzahlErgebnisse.setText("Keine Ergebnisse gespeichert.");
+            textViewAnzahlErgebnisse.setText(getString(R.string.No_saved_results));
         } else {
-            textViewAnzahlErgebnisse.setText("Anzahl gespeicherter Ergebnisse: " + anzahlErgebnisse);
+            String AnzahlErgebnisseString = getString(R.string.Amount_saved_results)+ ": " + anzahlErgebnisse;
+            textViewAnzahlErgebnisse.setText(AnzahlErgebnisseString);
         }
     }
 
@@ -123,7 +124,7 @@ public class ErgebnisListActivity extends BaseActivity {
         adapter.setSelectionMode(true);
         invalidateOptionsMenu();
         if (getSupportActionBar() != null) {
-            getSupportActionBar().setTitle("Einträge auswählen");
+            getSupportActionBar().setTitle(getString(R.string.Select_entries));
         }
     }
 
@@ -132,7 +133,7 @@ public class ErgebnisListActivity extends BaseActivity {
         adapter.setSelectionMode(false);
         invalidateOptionsMenu();
         if (getSupportActionBar() != null) {
-            getSupportActionBar().setTitle("Gespeicherte Ergebnisse");
+            getSupportActionBar().setTitle(getString(R.string.Saved_results));
         }
     }
 
@@ -146,7 +147,7 @@ public class ErgebnisListActivity extends BaseActivity {
         } else if (id == R.id.action_delete) {
             List<Result> selectedResults = adapter.getSelectedResults();
             if (selectedResults.isEmpty()) {
-                Toast.makeText(this, "Keine Einträge ausgewählt.", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, getString(R.string.No_entries_selected), Toast.LENGTH_SHORT).show();
             } else {
                 loeschBestaetigungsDialogAnzeigen(selectedResults);
             }
@@ -162,13 +163,13 @@ public class ErgebnisListActivity extends BaseActivity {
 
     private void loeschBestaetigungsDialogAnzeigen(List<Result> zuLoeschendeErgebnisse) {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setMessage("Möchten Sie die ausgewählten Ergebnisse löschen?")
-                .setPositiveButton("Löschen", new DialogInterface.OnClickListener() {
+        builder.setMessage(getString(R.string.Delete_entries_sure))
+                .setPositiveButton(getString(R.string.Delete), new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
                         ergebnisseLoeschen(zuLoeschendeErgebnisse);
                     }
                 })
-                .setNegativeButton("Abbrechen", null);
+                .setNegativeButton(getString(R.string.Cancel), null);
         builder.create().show();
     }
 
@@ -178,7 +179,7 @@ public class ErgebnisListActivity extends BaseActivity {
         }
         ergebnisseLaden();
         exitSelectionMode();
-        Toast.makeText(this, "Ausgewählte Ergebnisse gelöscht.", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, getString(R.string.Delete_succsesful), Toast.LENGTH_SHORT).show();
     }
 
     @Override

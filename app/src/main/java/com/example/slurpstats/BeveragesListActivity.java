@@ -36,7 +36,7 @@ public class BeveragesListActivity extends BaseActivity {
         setupNavigationDrawer();
 
         if (getSupportActionBar() != null) {
-            getSupportActionBar().setTitle("Gespeicherte Getränke");
+             getSupportActionBar().setTitle(getString( R.string.Saved_drinks ));
         }
 
         listViewGetraenke = findViewById(R.id.list_view_beverages);
@@ -58,7 +58,7 @@ public class BeveragesListActivity extends BaseActivity {
                     adapter.checkedStates.set(position, newState);
                 } else {
                     Toast.makeText(BeveragesListActivity.this,
-                            "Auswahl: " + getraenkeListe.get(position).getName(),
+                            getString(R.string.Auswahl) + " " +  getraenkeListe.get(position).getName(),
                             Toast.LENGTH_SHORT).show();
                 }
             }
@@ -86,9 +86,9 @@ public class BeveragesListActivity extends BaseActivity {
 
         int anzahlGetraenke = getraenkeListe.size();
         if (anzahlGetraenke == 0) {
-            textViewAnzahlGetraenke.setText("Keine Getränke gespeichert.");
+            textViewAnzahlGetraenke.setText(getString( R.string.No_saved_drinks ));
         } else {
-            textViewAnzahlGetraenke.setText("Anzahl gespeicherter Getränke: " + anzahlGetraenke);
+            textViewAnzahlGetraenke.setText(getString( R.string.Saved_drinks ) + ": " + anzahlGetraenke);
         }
     }
 
@@ -127,7 +127,7 @@ public class BeveragesListActivity extends BaseActivity {
         adapter.setSelectionMode(true);
         invalidateOptionsMenu();
         if (getSupportActionBar() != null) {
-            getSupportActionBar().setTitle("Getränke auswählen");
+            getSupportActionBar().setTitle(getString(R.string.Select_drinks));
         }
     }
 
@@ -136,7 +136,7 @@ public class BeveragesListActivity extends BaseActivity {
         adapter.setSelectionMode(false);
         invalidateOptionsMenu();
         if (getSupportActionBar() != null) {
-            getSupportActionBar().setTitle("Gespeicherte Getränke");
+            getSupportActionBar().setTitle(getString(R.string.Saved_drinks));
         }
     }
 
@@ -150,7 +150,7 @@ public class BeveragesListActivity extends BaseActivity {
         } else if (id == R.id.action_delete) {
             List<Drink> selectedDrinks = adapter.getSelectedDrinks();
             if (selectedDrinks.isEmpty()) {
-                Toast.makeText(this, "Keine Getränke ausgewählt.", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, getString(R.string.No_drinks_selected), Toast.LENGTH_SHORT).show();
             } else {
                 loeschBestaetigungsDialogAnzeigen(selectedDrinks);
             }
@@ -166,13 +166,13 @@ public class BeveragesListActivity extends BaseActivity {
 
     private void loeschBestaetigungsDialogAnzeigen(List<Drink> zuLoeschendeGetraenke) {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setMessage("Möchten Sie die ausgewählten Getränke löschen?")
-                .setPositiveButton("Löschen", new DialogInterface.OnClickListener() {
+        builder.setMessage(getString(R.string.Delete_drinks_sure))
+                .setPositiveButton(getString(R.string.Delete), new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
                         getraenkeLoeschen(zuLoeschendeGetraenke);
                     }
                 })
-                .setNegativeButton("Abbrechen", null);
+                .setNegativeButton(getString(R.string.Cancel), null);
         builder.create().show();
     }
 
@@ -182,7 +182,7 @@ public class BeveragesListActivity extends BaseActivity {
         }
         getraenkeLaden();
         exitSelectionMode();
-        Toast.makeText(this, "Ausgewählte Getränke gelöscht.", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, getString(R.string.Delete_drinks_confirmation), Toast.LENGTH_SHORT).show();
     }
 
     @Override

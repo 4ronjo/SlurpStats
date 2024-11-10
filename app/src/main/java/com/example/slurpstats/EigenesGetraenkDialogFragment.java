@@ -37,18 +37,22 @@ public class EigenesGetraenkDialogFragment extends DialogFragment {
         buttonSpeichern.setOnClickListener(v -> {
             String name = editTextGetraenkName.getText().toString().trim();
             String alkoholgehaltStr = editTextAlkoholgehalt.getText().toString().trim();
+            double alkoholgehalt = Double.parseDouble(alkoholgehaltStr);
+
 
             if (name.isEmpty() || alkoholgehaltStr.isEmpty()) {
-                Toast.makeText(getContext(), "Bitte alle Felder ausfüllen.", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), getString(R.string.Required_Fields), Toast.LENGTH_SHORT).show();
                 return;
             }
+            if (alkoholgehalt > 100){
+                Toast.makeText(getContext(), "Bitte gebe eine gültiges Alkoholgehalt ein", Toast.LENGTH_SHORT).show();
+                return;
 
+            }
             try {
-                double alkoholgehalt = Double.parseDouble(alkoholgehaltStr);
-
                 getraenkDatenquelle.addDrink(name, alkoholgehalt);
 
-                Toast.makeText(getContext(), "Getränk hinzugefügt.", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), getString(R.string.Drink_Added), Toast.LENGTH_SHORT).show();
 
                 if (getTargetFragment() instanceof GetraenkDialogFragment) {
                     ((GetraenkDialogFragment) getTargetFragment()).aktualisiereGetraenkeListe();
@@ -56,13 +60,13 @@ public class EigenesGetraenkDialogFragment extends DialogFragment {
 
                 dismiss();
             } catch (NumberFormatException e) {
-                Toast.makeText(getContext(), "Ungültiger Alkoholgehalt.", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), getString(R.string.Invalid_Alcohol), Toast.LENGTH_SHORT).show();
             }
         });
 
         builder.setView(view)
-                .setTitle("Eigenes Getränk hinzufügen")
-                .setNegativeButton("Abbrechen", (dialog, id) -> dialog.dismiss());
+                .setTitle(getString(R.string.Custom_Drink))
+                .setNegativeButton(getString(R.string.Cancel), (dialog, id) -> dialog.dismiss());
 
         return builder.create();
     }

@@ -19,7 +19,7 @@ public class ErgebnisActivity extends BaseActivity {
 
         setupNavigationDrawer();
         if (getSupportActionBar() != null) {
-            getSupportActionBar().setTitle("Dein Alkoholblutkonzentration");
+            getSupportActionBar().setTitle(getString(R.string.Your_alcohol_concentration));
         }
 
         textViewErgebnisDetails = findViewById(R.id.ergebnis_view);
@@ -33,7 +33,7 @@ public class ErgebnisActivity extends BaseActivity {
         if (ergebnisId != -1) {
             ergebnisAnzeigen(ergebnisId);
         } else {
-            textViewErgebnisDetails.setText("Kein Ergebnis zum Anzeigen.");
+            textViewErgebnisDetails.setText(getString(R.string.No_result));
         }
 
     }
@@ -50,12 +50,12 @@ public class ErgebnisActivity extends BaseActivity {
         verbrauchsdetailDatenquelle.close();
 
         StringBuilder ergebnisInfo = new StringBuilder();
-        ergebnisInfo.append("Titel: ").append(ergebnis.getTitle()).append("\n");
-        ergebnisInfo.append("Datum: ").append(ergebnis.getDate()).append("\n");
-        ergebnisInfo.append("Geschlecht: ").append(ergebnis.getGender()).append("\n");
-        ergebnisInfo.append("Gewicht: ").append(ergebnis.getWeight()).append(" kg\n");
-        ergebnisInfo.append("Blutalkoholkonzentration: ").append(String.format("%.2f", ergebnis.getBloodAlcoholContent())).append("‰\n");
-        ergebnisInfo.append("Konsumierte Getränke:\n");
+        ergebnisInfo.append(getString(R.string.Title)).append(": ").append(ergebnis.getTitle()).append("\n");
+        ergebnisInfo.append(getString(R.string.Date)).append(": ").append(ergebnis.getDate()).append("\n");
+        ergebnisInfo.append(getString(R.string.Gender)).append(": ").append(ergebnis.getGender()).append("\n");
+        ergebnisInfo.append(getString(R.string.Weight)).append(": ").append(ergebnis.getWeight()).append(" kg\n");
+        ergebnisInfo.append(getString(R.string.Blood_alcohol_concentration)).append(": ").append(String.format("%.2f", ergebnis.getBloodAlcoholContent())).append("‰\n");
+        ergebnisInfo.append(getString(R.string.Consumed_Drinks)).append(" :\n");
 
         DrinkDataSource getraenkDatenquelle = new DrinkDataSource(this);
         getraenkDatenquelle.open();

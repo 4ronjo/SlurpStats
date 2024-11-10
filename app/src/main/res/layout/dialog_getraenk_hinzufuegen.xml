@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical">
 
     <androidx.appcompat.widget.Toolbar
@@ -15,7 +15,7 @@
             android:id="@+id/toolbar_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Getränk hinzufügen"
+            android:text="@string/Add_drink"
             android:textColor="@android:color/white"
             android:textSize="20sp"
             android:layout_gravity="start"
@@ -28,7 +28,7 @@
             android:src="@drawable/ic_add"
             android:background="@null"
             android:layout_gravity="end"
-            android:tint="@android:color/white"/>
+            app:tint="@android:color/white"/>
     </androidx.appcompat.widget.Toolbar>
 
     <LinearLayout
@@ -50,14 +50,14 @@
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:layout_marginTop="16dp"
-            android:hint="Menge in Millilitern"
+            android:hint="@string/Amount_in_ml"
             android:inputType="numberDecimal" />
 
         <Button
             android:id="@+id/hinzufuegen_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Hinzufügen"
+            android:text="@string/Add"
             android:layout_marginTop="16dp"/>
 
     </LinearLayout>

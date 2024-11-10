@@ -7,33 +7,189 @@
         <item>Frau</item>
     </string-array>
 
-    <string-array name="Getraenke_Auswahl">
-        <item>Bier</item>
-        <item>Wodka</item>
-    </string-array>
-
     <string name="hilfe_text">
-        <![CDATA[
-        <h2>Willkommen bei SlurpStats!</h2>
-        Diese App ermöglicht die Berechnung Ihres Blutalkoholgehalts basierend auf der Widmark-Formel.
-        <br/><br/>
-        <b>Formel:</b><br/>
-        Blutalkoholkonzentration = (A) / (r × m)
-        <br/><br/>
-        <b>Erklärung:</b><br/>
-        - A: Aufgenommene Alkoholmenge in Gramm<br/>
-        - r: Verteilungsfaktor (0,68 für Männer, 0,55 für Frauen)<br/>
-        - m: Körpergewicht in kg
-        <br/><br/>
-        Bitte beachten Sie, dass diese Berechnung nur eine Schätzung ist und individuelle Faktoren nicht berücksichtigt.
-        <br/><br/>
-        <b>Hinweis:</b> Trinken Sie verantwortungsvoll und niemals unter Alkoholeinfluss fahren.
-        ]]>
+    \t "Willkommen bei SlurpStats!
+
+
+    Diese App ermöglicht die Berechnung Ihres
+    Blutalkoholgehalts basierend auf der
+    Widmark-Formel.
+    Formel:
+
+    Blutalkoholkonzentration = (A) / (r × m)
+
+
+    Erklärung:
+    A: Aufgenommene Alkoholmenge in Gramm
+    r: Verteilungsfaktor :
+        (0,68 für Männer, 0,55 für Frauen)
+    m: Körpergewicht in kg
+    Bitte beachten Sie, dass diese Berechnung
+    nur eine Schätzung ist und individuelle
+    Faktoren nicht berücksichtigt.
+
+
+    Hinweis:
+
+    Trinken Sie verantwortungsvoll und
+    niemals unter Alkoholeinfluss fahren."
     </string>
-    <string name="navigation_drawer_open">
-        Navigation
+    <string name="impressum_text">
+    "Impressum
+
+    Angaben gemäß § 5 TMG:
+    Max Mustermann
+    Musterstraße 1
+    12345 Musterstadt
+
+    Vertreten durch:
+    Max Mustermann
+
+    Kontakt:
+    Telefon: 01234-56789
+    E-Mail: max@mustermann.de
+
+    Haftungsausschluss:
+    Die Inhalte unserer Seiten wurden mit größter
+    Sorgfalt erstellt. Für die Richtigkeit,
+    Vollständigkeit und Aktualität der Inhalte
+    können wir jedoch keine Gewähr übernehmen."
+    </string>
+    <string name="Help">
+        Hilfe
+    </string>
+    <string name="Delete_succsesful">
+        Ausgewählte Ergebnisse gelöscht.
+    </string>
+    <string name="Delete_entries_sure">
+        Möchten Sie die ausgewählten Ergebnisse löschen?
+    </string>
+    <string name="No_entries_selected">
+        Keine Einträge ausgewählt.
+    </string>
+    <string name="Select_entries">
+        Einträge auswählen
+    </string>
+    <string name="Amount_saved_results">
+        Anzahl gespeicherter Ergebnisse
+    </string>
+    <string name="No_saved_results">
+        Keine Ergebnisse gespeichert.
+    </string>
+    <string name="Saved_results">
+        Gespeicherte Ergebnisse
+    </string>
+    <string name="Title">
+        Titel
+    </string>
+    <string name="Date">
+        Datum
+    </string>
+    <string name="Gender">
+        Geschlecht
+    </string>
+    <string name="Weight">
+        Gewicht
+    </string>
+    <string name="Blood_alcohol_concentration">
+        Blutalkoholkonzentration
+    </string>
+    <string name="Consumed_Drinks">
+        Konsumierte Getränke
+    </string>
+    <string name="No_result">
+        Kein Ergebnis zum Anzeigen.
+    </string>
+    <string name="Your_alcohol_concentration">
+        Deine Alkoholblutkonzentration
+    </string>
+    <string name="Custom_Drink">
+        Eigenes Getränk hinzufügen
+    </string>
+    <string name="Invalid_Alcohol">
+        Ungültiger Alkoholgehalt
+    </string>
+    <string name="Drink_Added">
+        Getränk hinzugefügt.
+    </string>
+    <string name="Required_Fields">
+        Bitte alle Felder ausfüllen.
+    </string>
+    <string name="Drink_selection">
+        Getränke auswählen
+    </string>
+    <string name="Select_drinks">
+        Getränke auswählen
+    </string>
+    <string name="Number_saved_drinks">
+        Anzahl gespeicherter Getränke
+    </string>
+    <string name="No_saved_drinks">
+        Keine Getränke gespeichert
+    </string>
+    <string name="No_drinks_selected">
+        Keine Getränke ausgewählt
+    </string>
+    <string name="Auswahl">
+        Auswahl
+    </string>
+    <string name="Saved_drinks">
+        Gespeicherte Getränke
+    </string>
+    <string name="Delete_drinks_sure">
+        Möchten Sie die ausgewählten Getränke löschen?
+    </string>
+    <string name="Delete">
+        Löschen
+    </string>
+    <string name="Cancel">
+        Abbrechen
+    </string>
+    <string name="Delete_drinks_confirmation">
+        Ausgewählte Getränke gelöscht
+    </string>
+    <string name="Drink_not_found">
+        Getränk nicht gefunden
+    </string>
+    <string name="Valid_amount">
+        Bitte geben Sie eine gültige Menge ein.
+    </string>
+    <string name="Error">
+        Ein Fehler ist aufgetreten.
+    </string>
+    <string name="Selected_Drinks">
+        Ausgewählte Getränke:
+    </string>
+    <string name="Selection_reset">
+        Auswahl zurückgesetzt.
+    </string>
+    <string name="Atleast_one_drink">
+        Bitte fügen Sie mindestens ein Getränk hinzu
+    </string>
+    <string name="Result_nr">
+        Ergebnis Nr.
+    </string>
+    <string name="Valid_weigth">
+        Bitte geben Sie ein gültiges Gewicht ein
     </string>
     <string name="navigation_drawer_close">
         Schließen
     </string>
+    <string name="navigation_drawer_open">
+        Navigation
+    </string>
+    <string name="getraenke_hinzufuegen">Getränke hinzufügen</string>
+    <string name="weight_in_kg">Körpergewicht in Kilogramm</string>
+    <string name="Calculate">Berechnen</string>
+    <string name="Alkohol_Gehalt">Berechne deinen Alkoholgehalt im Blut</string>
+    <string name="Start_Calculation">Starte die Berechnung</string>
+    <string name="Count_saved_drinks">Anzahl gespeicherter Getränke: 0</string>
+    <string name="Drink_name">Getränkename</string>
+    <string name="Alcoholpercentage">Alkoholgehalt in Prozent</string>
+    <string name="Save">Speichern</string>
+    <string name="Add_drink">Getränk hinzufügen</string>
+    <string name="Amount_in_ml">Menge in Millilitern</string>
+    <string name="Add">Hinzufügen</string>
+    <string name="drink_name">Drink Name</string>
+    <string name="result_title">Result Title</string>
 </resources>

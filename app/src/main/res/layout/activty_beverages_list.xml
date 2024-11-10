@@ -24,7 +24,7 @@
             android:id="@+id/text_view_anzahl_beverages"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Anzahl gespeicherter Getränke: 0"
+            android:text="@string/Count_saved_drinks"
             android:textSize="18sp"
             android:layout_margin="16dp"/>
 
